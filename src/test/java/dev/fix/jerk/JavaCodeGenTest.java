@@ -6,6 +6,7 @@ import javax.lang.model.element.Modifier;
 import java.io.StringWriter;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.nio.file.Files.readString;
 import static java.util.Objects.requireNonNull;
@@ -27,7 +28,10 @@ final class JavaCodeGenTest {
             .withModifiers(Modifier.PUBLIC, Modifier.STATIC)
             .withParameter(new JavaParam(JavaClass.of(String.class), "args"))
             .withBody(
-                TemplateJavaExpression.of("var list = new %s<%s>()").bind(ArrayList.class, String.class).asStatement()
+                JavaFragment.join(List.of(
+                    TemplateJavaExpression.of("var list = new %s<%s>()").bind(ArrayList.class, String.class).asStatement(),
+                    AccessExpression.accessLocal("list").call("clear").asStatement()
+                ))
             )
             .build();
 
