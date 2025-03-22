@@ -2,15 +2,21 @@
 import dev.fix.jerk.test.ImportedName;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 #end
 
 final class JavaCodeGen {
     private final ArrayList<String> list1 = new ArrayList<>();
     private final $MyArrayList list2 = new ${MyArrayList}();
+    private final $ListOfList list3 = new ${ListOfList}();
     private final $UniqueName unique = new ${UniqueName}();
 
     public static void test1() {
         ImportedName importedName = new ImportedName();
+        Arrays.asList(#args
+        $arg1
+        $arg2
+        #end);
     }
 
     #indent(1 $main)

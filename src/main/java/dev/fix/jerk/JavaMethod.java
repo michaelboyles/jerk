@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public final class JavaMethod {
+public final class JavaMethod implements JavaFragment {
     private final List<Modifier> modifiers;
     private final JavaType returnType;
     private final List<JavaParam> parameters;

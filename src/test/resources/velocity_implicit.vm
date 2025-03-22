@@ -7,6 +7,7 @@ See https://www.jetbrains.com/help/idea/template-data-languages.html#a9716fd7
 
 #* @vtlvariable name="MyArrayList" type="dev.fix.jerk.JavaType" *#
 #* @vtlvariable name="UniqueName" type="dev.fix.jerk.JavaType" *#
+#* @vtlvariable name="ListOfList" type="dev.fix.jerk.JavaType" *#
 
 #* @vtlmacrolibrary path="velocity_directives.vm" *#
 #* @vtlmacrolibrary path="VM_global_library.vm" *#
