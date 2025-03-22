@@ -1,0 +1,17 @@
+#imports()
+import dev.fix.jerk.test.ImportedName;
+
+import java.util.ArrayList;
+#end
+
+final class JavaCodeGen {
+    private final ArrayList<String> list1 = new ArrayList<>();
+    private final $MyArrayList list2 = new ${MyArrayList}();
+    private final $UniqueName unique = new ${UniqueName}();
+
+    public static void test1() {
+        ImportedName importedName = new ImportedName();
+    }
+
+    $main
+}

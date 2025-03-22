@@ -1,0 +1,6 @@
+## These are fake macros representing custom directives, used to get IntelliJ to stop warning about
+## missing definitions.
+
+#macro(imports)
+    ## See dev.fix.jerk.JavaImportsDirective
+#end

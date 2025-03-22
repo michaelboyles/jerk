@@ -1,0 +1,14 @@
+#* @implicitly included *#
+#*
+These are type mappings to give IntelliJ proper code completion in Velocity templates.
+
+See https://www.jetbrains.com/help/idea/template-data-languages.html#a9716fd7
+*#
+
+#* @vtlvariable name="MyArrayList" type="dev.fix.jerk.JavaType" *#
+#* @vtlvariable name="UniqueName" type="dev.fix.jerk.JavaType" *#
+
+#* @vtlmacrolibrary path="velocity_directives.vm" *#
+
+#* Fixes for non-default behaviour: *#
+#* @vtlvariable name="foreach" type="org.apache.velocity.runtime.directive.ForeachScope" *#
