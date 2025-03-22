@@ -11,19 +11,22 @@ public interface JavaExpression extends JavaFragment {
         return new BasicJavaStatement(this);
     }
 
-    /// Create a new Java expression using the null literal
+    /// Create a new JavaExpression using the null literal
     static JavaExpression nullLiteral() {
         return new ValidJavaExpression("null");
     }
 
+    /// Create a new JavaExpression representing an integer literal value
     static JavaExpression intLiteral(int value) {
         return new ValidJavaExpression(String.valueOf(value));
     }
 
+    /// Create a new JavaExpression representing a long literal value
     static JavaExpression longLiteral(long value) {
         return new ValidJavaExpression(String.valueOf(value) + 'L');
     }
 
+    /// Create a new JavaExpression representing a boolean literal value - true or false
     static JavaExpression booleanLiteral(boolean value) {
         return new ValidJavaExpression(String.valueOf(value));
     }
@@ -34,6 +37,10 @@ public interface JavaExpression extends JavaFragment {
         return new ValidJavaExpression('"' + str.replace("\"", "\\\"") + '"');
     }
 
+    /// Create a JavaExpression without any checks to see whether it's a valid expression.
+    ///
+    /// If the expression contains any references to Java types, those types won't be eligible for automatic name clash
+    /// resolution.
     static JavaExpression unchecked(String java) {
         return new UncheckedJavaExpression(java);
     }

@@ -1,15 +1,18 @@
 package dev.fix.jerk;
 
-/// An expression used to access a value. Guaranteed to be syntactically legal. Can consist of a chain
+/// An expression used to access a value. Guaranteed to be syntactically legal. This can consist of a chain
 /// e.g. `this.car.getEngine().block`.
 public final class AccessExpression implements JavaExpression {
-    public static AccessExpression accessLocal(CharSequence var) {
-        if (isInvalidJavaIdentifier(var)) {
-            throw new IllegalArgumentException("Not a valid local variable: '" + var + "'");
+    /// Create a new AccessExpression starting with the given local variable
+    public static AccessExpression accessLocal(CharSequence localVariable) {
+        if (isInvalidJavaIdentifier(localVariable)) {
+            throw new IllegalArgumentException("Not a valid local variable: '" + localVariable + "'");
         }
-        return new AccessExpression(var);
+        return new AccessExpression(localVariable);
     }
 
+    /// Create a new AccessExpression starting with the given class field. It will be discriminated with from
+    /// any locals which may share the name by prefixing the field with `this.`.
     public static AccessExpression accessField(CharSequence field) {
         if (isInvalidJavaIdentifier(field)) {
             throw new IllegalArgumentException("Not a valid field: '" + field + "'");
@@ -23,6 +26,8 @@ public final class AccessExpression implements JavaExpression {
         this.expr = expr.toString();
     }
 
+    /// Create a new expression from the current expression, plus a call to the given method, by adding e.g. `.method()`
+    /// @return a new access expression
     public AccessExpression call(CharSequence method) {
         if (isInvalidJavaIdentifier(method)) {
             throw new IllegalArgumentException("Not a valid method: '" + method + "'");
@@ -30,6 +35,8 @@ public final class AccessExpression implements JavaExpression {
         return new AccessExpression(expr + '.' + method + "()");
     }
 
+    /// Create a new expression from the current expression, plus access of a field, by adding e.g. `.field`.
+    /// @return a new access expression
     public AccessExpression field(CharSequence field) {
         if (isInvalidJavaIdentifier(field)) {
             throw new IllegalArgumentException("Not a valid field name: '" + field + "'");

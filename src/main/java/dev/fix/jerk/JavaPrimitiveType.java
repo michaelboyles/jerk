@@ -1,5 +1,6 @@
 package dev.fix.jerk;
 
+/// The primitive types within Java, such as "int"
 public enum JavaPrimitiveType implements JavaType {
     BYTE("0"),
     SHORT("0"),

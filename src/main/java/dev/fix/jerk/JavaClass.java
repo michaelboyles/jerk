@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+/// A Java class, interface, enum or record. This only models "raw" (non-generic) types. To add type parameters, you
+/// can call [#withParam].
 public final class JavaClass implements JavaType {
     private final FullyQualifiedName fullyQualifiedName;
 
@@ -19,10 +21,12 @@ public final class JavaClass implements JavaType {
         this(FullyQualifiedName.of(fullyQualifiedName));
     }
 
+    /// Create a JavaClass from a java.lang.Class
     public static JavaClass of(Class<?> clazz) {
         return new JavaClass(clazz.getPackageName(), clazz.getSimpleName());
     }
 
+    /// Get a new type
     public JavaType withParam(JavaType typeName) {
         return new ParameterizedJavaType(this, List.of(typeName));
     }
