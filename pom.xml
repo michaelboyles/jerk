@@ -6,13 +6,23 @@
 
     <groupId>dev.fix</groupId>
     <artifactId>jerk</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${revision}</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>io.github.michaelboyles</groupId>
+                <artifactId>s3-maven-extension</artifactId>
+                <version>0.5.0</version>
+            </extension>
+        </extensions>
+    </build>
 
     <dependencies>
         <dependency>
@@ -33,4 +43,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>s3-snapshots</id>
+            <url>${s3bucket}</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

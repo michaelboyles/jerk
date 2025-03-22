@@ -1,0 +1,36 @@
+on:
+  push:
+    branches: [ develop ]
+    tags: [ 'v*.*.*' ]
+  pull_request:
+    branches: [ develop ]
+    tags: [ 'v*.*.*' ]
+
+env:
+  REVISION: ${{ github.sha }}-SNAPSHOT
+  AWS_REGION: eu-west-2
+  S3BUCKET: ${{ secrets.S3BUCKET }}
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+          cache: maven
+      - if: github.ref_type == 'tag'
+        name: Set release revision
+        run: echo "REVISION=$(echo $GITHUB_REF_NAME | cut -c 2-)" >> $GITHUB_ENV
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::543151225844:role/github-actions
+          role-session-name: JerkBuildInGithubActions
+          aws-region: ${{ env.AWS_REGION }}
+      - run: mvn deploy --no-transfer-progress -Drevision=$REVISION -Daws.region=${{ env.AWS_REGION }} -Ds3bucket=${{ env.S3BUCKET }}
