@@ -1,0 +1,6 @@
+## A macro that indents possibly mutli-line code to the given indentation level, with 4 spaces per indent
+#macro(indent $level $code)
+#foreach ($line in $code.toString().split("\n"))
+#foreach($i in [1..$level])    #end$line
+#end
+#end

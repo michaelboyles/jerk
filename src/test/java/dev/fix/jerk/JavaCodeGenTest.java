@@ -40,9 +40,6 @@ final class JavaCodeGenTest {
         var expected = readString(Paths.get(expectedUri)).replace("\r\n", "\n");
         var actual = writer.toString().replace("\r\n", "\n");
 
-        assertEquals(expected.length(), actual.length(), "Length should be equal");
-        for (int i = 0; i < expected.length(); i++) {
-            assertEquals(expected.charAt(i), actual.charAt(i));
-        }
+        assertEquals(expected, actual);
     }
 }

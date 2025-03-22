@@ -9,6 +9,7 @@ See https://www.jetbrains.com/help/idea/template-data-languages.html#a9716fd7
 #* @vtlvariable name="UniqueName" type="dev.fix.jerk.JavaType" *#
 
 #* @vtlmacrolibrary path="velocity_directives.vm" *#
+#* @vtlmacrolibrary path="VM_global_library.vm" *#
 
 #* Fixes for non-default behaviour: *#
 #* @vtlvariable name="foreach" type="org.apache.velocity.runtime.directive.ForeachScope" *#

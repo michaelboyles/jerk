@@ -31,16 +31,14 @@ public final class JavaMethod {
         String params = this.parameters.stream()
             .map(JavaParam::toString)
             .collect(Collectors.joining(", "));
-        String[] bodyLines = body.toString().split("\\R");
-        String body = Arrays.stream(bodyLines)
-            .map(line -> "    " + line)
-            .collect(Collectors.joining("\n"));
         String returnType = this.returnType == null ? "void" : this.returnType.toString();
-        return """
+        return TemplateJavaFragment.of("""
             %s %s %s(%s) {
-            %s
+                %s
             }
-            """.formatted(modifiers, returnType, name, params, body);
+            """,
+            modifiers, returnType, name, params, body
+        ).toString();
     }
 
     public static Builder builderForName(String name) {
