@@ -55,8 +55,10 @@ final class JavaCodeGenTest {
                 ))
             )
             .build();
-
         context.put("main", main);
+
+        var testMethod = VelocityJavaFragment.ofTemplate(engine.getTemplate("testMethod.java.vm"));
+        context.put("testMethod", testMethod);
 
         StringWriter writer = new StringWriter();
         context.write(template, writer);

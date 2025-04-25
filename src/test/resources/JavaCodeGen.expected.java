@@ -23,4 +23,8 @@ final class JavaCodeGen {
         System.out.println("Hello");
         Objects.hash(true, -10, 9999999999999L, null, null);
     }
+
+    public static ImportedName test() {
+        return new ImportedName();
+    }
 }

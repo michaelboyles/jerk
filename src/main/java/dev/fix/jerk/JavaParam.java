@@ -2,6 +2,7 @@ package dev.fix.jerk;
 
 import java.util.Objects;
 
+/// A parameter for a [JavaMethod].
 public final class JavaParam {
     private final JavaType type;
     private final String name;

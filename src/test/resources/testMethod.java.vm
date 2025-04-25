@@ -1,0 +1,7 @@
+#imports()
+import dev.fix.jerk.test.ImportedName;
+#end
+##
+public static ImportedName test() {
+    return new ImportedName();
+}

@@ -20,4 +20,6 @@ final class JavaCodeGen {
     }
 
     #indent(1 $main)
+
+    #indent(1 $testMethod)
 }
