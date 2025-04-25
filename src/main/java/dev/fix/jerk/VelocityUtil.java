@@ -18,7 +18,9 @@ public class VelocityUtil {
     public static VelocityEngine newEngineWithDirectives(Class<? extends Directive>... directives) {
         Properties props = new Properties();
         props.setProperty(Velocity.SPACE_GOBBLING, "lines");
-        props.setProperty(Velocity.CUSTOM_DIRECTIVES, stringifyDirectives(Arrays.asList(directives)));
+        if (directives.length > 0) {
+            props.setProperty(Velocity.CUSTOM_DIRECTIVES, stringifyDirectives(Arrays.asList(directives)));
+        }
         props.setProperty(Velocity.RESOURCE_LOADERS, "class");
         props.setProperty(Velocity.RUNTIME_REFERENCES_STRICT, "true");
         props.setProperty(
