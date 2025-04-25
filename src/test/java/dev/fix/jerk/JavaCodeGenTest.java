@@ -39,7 +39,7 @@ final class JavaCodeGenTest {
 
         var main = JavaMethod.builderForName("main")
             .withModifiers(Modifier.PUBLIC, Modifier.STATIC)
-            .withParameter(new JavaParam(JavaClass.of(String.class), "args"))
+            .withParameter(JavaParam.of(String.class, "args"))
             .withBody(
                 JavaFragment.join(List.of(
                     TemplateJavaExpression.of("var list = new %s<%s>()").bind(ArrayList.class, String.class).asStatement(),

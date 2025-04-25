@@ -1,5 +1,7 @@
 package dev.fix.jerk;
 
+import com.google.errorprone.annotations.CheckReturnValue;
+
 import javax.lang.model.element.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,6 +93,7 @@ public final class JavaMethod implements JavaFragment {
             return this;
         }
 
+        @CheckReturnValue
         public JavaMethod build() {
             return new JavaMethod(modifiers, returnType, parameters, name, body);
         }
