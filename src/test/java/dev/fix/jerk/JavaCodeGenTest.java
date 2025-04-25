@@ -22,10 +22,7 @@ final class JavaCodeGenTest {
     private static final JavaStaticMethodRef HASH_METHOD = JavaStaticMethodRef.of(Objects.class, "hash", Object[].class);
 
     @Test void generateJava() throws Exception {
-        var engine = VelocityUtil.newEngineWithDirectives(
-            JavaArgsDirective.class,
-            JavaImportsDirective.class
-        );
+        var engine = VelocityUtil.newEngineWithDefaultDirectives();
 
         var template = engine.getTemplate("JavaCodeGen.java.vm");
         JavaContext context = new JavaContext("org.example");
