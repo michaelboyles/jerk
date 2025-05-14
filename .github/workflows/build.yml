@@ -9,6 +9,10 @@ env:
   AWS_REGION: eu-west-2
   S3BUCKET: ${{ secrets.S3BUCKET }}
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
