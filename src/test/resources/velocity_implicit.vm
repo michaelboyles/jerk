@@ -5,9 +5,9 @@ These are type mappings to give IntelliJ proper code completion in Velocity temp
 See https://www.jetbrains.com/help/idea/template-data-languages.html#a9716fd7
 *#
 
-#* @vtlvariable name="MyArrayList" type="io.github.michaelboyles.JavaType" *#
-#* @vtlvariable name="UniqueName" type="io.github.michaelboyles.JavaType" *#
-#* @vtlvariable name="ListOfList" type="io.github.michaelboyles.JavaType" *#
+#* @vtlvariable name="MyArrayList" type="io.github.michaelboyles.jerk.JavaType" *#
+#* @vtlvariable name="UniqueName" type="io.github.michaelboyles.jerk.JavaType" *#
+#* @vtlvariable name="ListOfList" type="io.github.michaelboyles.jerk.JavaType" *#
 
 #* @vtlmacrolibrary path="velocity_directives.vm" *#
 #* @vtlmacrolibrary path="VM_global_library.vm" *#

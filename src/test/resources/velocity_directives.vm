@@ -2,5 +2,5 @@
 ## missing definitions.
 
 #macro(imports)
-    ## See io.github.michaelboyles.JavaImportsDirective
+    ## See io.github.michaelboyles.jerk.JavaImportsDirective
 #end

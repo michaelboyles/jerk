@@ -24,18 +24,18 @@ Jerk adds utils that automatically manage imports and a few other bits.
 ### Sample usage
 
 For a good starting point, check
-[`io.github.michaelboyles.JavaCodeGenTest`](https://github.com/michaelboyles/jerk/blob/develop/src/test/java/io/github/michaeboyles/JavaCodeGenTest.java)
+[`io.github.michaelboyles.jerk.JavaCodeGenTest`](https://github.com/michaelboyles/jerk/blob/develop/src/test/java/io/github/michaeboyles/jerk/JavaCodeGenTest.java)
 
 TLDR:
  - wrap imports that are always needed in the `#imports` directive
    - You'll need to register that directive with the Velocity engine. `VelocityUtil` can give you an engine with the
      directives already registered
- - for imports which are conditionally needed, use subtypes of `io.github.michaelboyles.JavaType`
+ - for imports which are conditionally needed, use subtypes of `io.github.michaelboyles.jerk.JavaType`
 
 ```java
-import io.github.michaelboyles.JavaClass;
-import io.github.michaelboyles.JavaContext;
-import io.github.michaelboyles.VelocityUtil;
+import io.github.michaelboyles.jerk.JavaClass;
+import io.github.michaelboyles.jerk.JavaContext;
+import io.github.michaelboyles.jerk.VelocityUtil;
 
 import java.io.StringWriter;
 
@@ -44,7 +44,7 @@ class Sample {
         var engine = VelocityUtil.newEngineWithDefaultDirectives();
         var template = engine.getTemplate("sample.java.vm");
         var context = new JavaContext("org.example");
-        context.put("MyArrayList", JavaClass.of(io.github.michaelboyles.test.ArrayList.class));
+        context.put("MyArrayList", JavaClass.of(test.io.github.michaelboyles.jerk.ArrayList.class));
         StringWriter writer = new StringWriter();
         context.write(template, writer);
         System.out.print(writer);
@@ -74,6 +74,6 @@ import java.util.ArrayList;
 
 class Generated {
     private final ArrayList<String> list1 = new ArrayList<>();
-    private final io.github.michaelboyles.test.ArrayList<String> list2 = new io.github.michaelboyles.test.ArrayList<>();
+    private final io.github.michaelboyles.jerk.test.ArrayList<String> list2 = new io.github.michaelboyles.jerk.test.ArrayList<>();
 }
 ```
