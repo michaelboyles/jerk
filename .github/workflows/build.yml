@@ -1,19 +1,13 @@
 on:
   push:
     branches: [ develop ]
-    tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ develop ]
-    tags: [ 'v*.*.*' ]
 
 env:
   REVISION: ${{ github.sha }}-SNAPSHOT
   AWS_REGION: eu-west-2
   S3BUCKET: ${{ secrets.S3BUCKET }}
-
-permissions:
-  id-token: write
-  contents: read
 
 jobs:
   build:
@@ -25,9 +19,6 @@ jobs:
           java-version: 21
           distribution: temurin
           cache: maven
-      - if: github.ref_type == 'tag'
-        name: Set release revision
-        run: echo "REVISION=$(echo $GITHUB_REF_NAME | cut -c 2-)" >> $GITHUB_ENV
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::543151225844:role/github-actions
