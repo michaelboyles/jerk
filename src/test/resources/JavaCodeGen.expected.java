@@ -1,15 +1,15 @@
 package org.example;
 
-import dev.fix.jerk.test.ImportedName;
-import dev.fix.jerk.test.UniqueName;
+import io.github.michaelboyles.test.ImportedName;
+import io.github.michaelboyles.test.UniqueName;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
 final class JavaCodeGen {
     private final ArrayList<String> list1 = new ArrayList<>();
-    private final dev.fix.jerk.test.ArrayList list2 = new dev.fix.jerk.test.ArrayList();
-    private final ArrayList<dev.fix.jerk.test.ArrayList> list3 = new ArrayList<dev.fix.jerk.test.ArrayList>();
+    private final io.github.michaelboyles.test.ArrayList list2 = new io.github.michaelboyles.test.ArrayList();
+    private final ArrayList<io.github.michaelboyles.test.ArrayList> list3 = new ArrayList<io.github.michaelboyles.test.ArrayList>();
     private final UniqueName unique = new UniqueName();
 
     public static void test1() {

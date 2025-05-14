@@ -1,5 +1,5 @@
 #imports()
-import dev.fix.jerk.test.ImportedName;
+import io.github.michaelboyles.test.ImportedName;
 
 import java.util.ArrayList;
 import java.util.Arrays;
