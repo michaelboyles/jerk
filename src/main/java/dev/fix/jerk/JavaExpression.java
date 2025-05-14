@@ -34,7 +34,7 @@ public interface JavaExpression extends JavaFragment {
     /// Create a new Java expression using a string literal containing the given string, which will be escaped if
     /// necessary
     static JavaExpression stringLiteral(String str) {
-        return new ValidJavaExpression('"' + str.replace("\"", "\\\"") + '"');
+        return new ValidJavaExpression('"' + str.replace("\"", "\\\"").replace("\n", "\\n") + '"');
     }
 
     /// Create a JavaExpression without any checks to see whether it's a valid expression.
